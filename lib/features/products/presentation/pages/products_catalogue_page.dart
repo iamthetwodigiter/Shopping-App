@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shopping/features/cart/presentation/widgets/go_to_cart_button.dart';
 import 'package:shopping/features/products/presentation/widgets/products_card.dart';
 import 'package:shopping/features/products/provider/product_provider.dart';
 
@@ -13,6 +14,7 @@ class ProductsCataloguePage extends ConsumerStatefulWidget {
 
 class _ProductsCataloguePageState extends ConsumerState<ProductsCataloguePage> {
   int _page = 1;
+
   @override
   void initState() {
     super.initState();
@@ -21,12 +23,12 @@ class _ProductsCataloguePageState extends ConsumerState<ProductsCataloguePage> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
     final productState = ref.watch(productNotifierProvider);
 
-    print(_page);
     if (productState.isLoading) {
       return Scaffold(
         body: Center(
@@ -40,12 +42,7 @@ class _ProductsCataloguePageState extends ConsumerState<ProductsCataloguePage> {
         title: Text('Catalogue'),
         centerTitle: true,
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.shopping_cart_outlined,
-            ),
-          ),
+          GoToCartButton()
         ],
       ),
       body: SafeArea(
@@ -72,12 +69,12 @@ class _ProductsCataloguePageState extends ConsumerState<ProductsCataloguePage> {
                           padding: EdgeInsets.zero,
                         ),
                         onPressed: () {
-                           setState(() {
-                          _page--;
-                        });
-                        ref
-                            .read(productNotifierProvider.notifier)
-                            .getAllProducts(_page);
+                          setState(() {
+                            _page--;
+                          });
+                          ref
+                              .read(productNotifierProvider.notifier)
+                              .getAllProducts(_page);
                         },
                         child: Text(
                           '< Prev',

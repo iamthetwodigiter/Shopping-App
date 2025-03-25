@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:shopping/features/cart/presentation/widgets/add_to_cart_button.dart';
 import 'package:shopping/features/products/domain/entity/product_entity.dart';
 
 class ProductsCard extends StatefulWidget {
@@ -52,24 +53,7 @@ class _ProductsCardState extends State<ProductsCard> {
                   );
                 },
               ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  fixedSize: Size(50, 25),
-                  padding: EdgeInsets.zero,
-                ),
-                onPressed: () {},
-                child: Text(
-                  'Add',
-                  style: TextStyle(
-                    color: Colors.pink,
-                    fontSize: 12,
-                  ),
-                ),
-              ),
+              AddToCartButton(product: widget.product),
             ],
           ),
           Text(
