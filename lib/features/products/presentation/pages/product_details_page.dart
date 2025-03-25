@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopping/features/cart/presentation/widgets/add_to_cart_button.dart';
+import 'package:shopping/features/cart/presentation/widgets/go_to_cart_button.dart';
 import 'package:shopping/features/products/domain/entity/product_entity.dart';
 
 class ProductDetailsPage extends ConsumerStatefulWidget {
@@ -437,11 +438,18 @@ class _ProductDetailsPageState extends ConsumerState<ProductDetailsPage> {
                           ),
                         ),
                       ),
+                      SizedBox(height: 55)
                   ],
                 ),
               ),
             ),
-            AddToCartButton(product: widget.product, isDetailsPage: true)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                AddToCartButton(product: widget.product, isDetailsPage: true),
+                GoToCartButton(),
+              ],
+            )
           ],
         ),
       ),

@@ -77,7 +77,7 @@ class _ProductsCataloguePageState extends ConsumerState<ProductsCataloguePage> {
                               .getAllProducts(_page);
                         },
                         child: Text(
-                          '< Prev',
+                          '< Back',
                           style: TextStyle(
                             color: Colors.pink,
                             fontSize: 15,
@@ -93,7 +93,7 @@ class _ProductsCataloguePageState extends ConsumerState<ProductsCataloguePage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),
-                        fixedSize: Size(50, 25),
+                        fixedSize: Size(95, 25),
                         padding: EdgeInsets.zero,
                       ),
                       onPressed: () {
@@ -105,7 +105,7 @@ class _ProductsCataloguePageState extends ConsumerState<ProductsCataloguePage> {
                             .getAllProducts(_page);
                       },
                       child: Text(
-                        'Next >',
+                        'Show More >',
                         style: TextStyle(
                           color: Colors.pink,
                           fontSize: 15,

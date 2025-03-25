@@ -52,7 +52,7 @@ class AddToCartButton extends ConsumerWidget {
             color: Colors.pink,
             width: 0.5,
           ),
-          fixedSize: isDetailsPage ? Size(size.width - 30, 35) : Size(80, 35),
+          fixedSize: isDetailsPage ? Size(size.width - 55, 35) : Size(80, 35),
         ),
         child: Text(
           isDetailsPage ? 'Add to Cart' : 'Add',
@@ -65,7 +65,7 @@ class AddToCartButton extends ConsumerWidget {
 
     return Container(
       height: isDetailsPage ? 50 : 42,
-      width: isDetailsPage ? size.width - 30 : 125,
+      width: isDetailsPage ? size.width - 55 : 125,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),

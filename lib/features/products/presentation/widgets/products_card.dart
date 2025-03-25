@@ -32,7 +32,7 @@ class _ProductsCardState extends State<ProductsCard> {
         );
       },
       child: Container(
-        height: 260,
+        height: 265,
         width: size.width / 2.2,
         margin: EdgeInsets.all(5),
         padding: EdgeInsets.all(5),
