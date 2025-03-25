@@ -39,10 +39,58 @@ class _CartPageState extends ConsumerState<CartPage> {
       return totalitems;
     }
 
+    void clearCart(BuildContext context, VoidCallback deleteFn) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Clear Cart',
+              style:
+                  TextStyle(color: Colors.pink, fontWeight: FontWeight.bold)),
+          content: Text(
+              'Following items will be removed:\n\n* ${cartState.cartItems.map((item) => item.product.title).join("\n* ")}'),
+          actions: [
+            IconButton(
+              onPressed: () => Navigator.of(context).pop(),
+              icon: Text(
+                'NO',
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                deleteFn();
+                Navigator.of(context).pop();
+              },
+              icon: Text(
+                'YES',
+                style:
+                    TextStyle(color: Colors.pink, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Cart'),
         centerTitle: true,
+        actions: [
+          if (cartState.itemCount > 0)
+            IconButton(
+              onPressed: () {
+                clearCart(context, () {
+                  ref.read(cartNotifierProvider.notifier).clearCart();
+                });
+              },
+              icon: Icon(
+                Icons.delete,
+                color: Colors.pink,
+              ),
+            ),
+        ],
       ),
       body: SafeArea(
         child: Stack(
