@@ -12,11 +12,12 @@ class ProductsCataloguePage extends ConsumerStatefulWidget {
 }
 
 class _ProductsCataloguePageState extends ConsumerState<ProductsCataloguePage> {
+  int _page = 1;
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(productNotifierProvider.notifier).getAllProducts(1);
+      ref.read(productNotifierProvider.notifier).getAllProducts(_page);
     });
   }
 
@@ -25,6 +26,7 @@ class _ProductsCataloguePageState extends ConsumerState<ProductsCataloguePage> {
     final size = MediaQuery.sizeOf(context);
     final productState = ref.watch(productNotifierProvider);
 
+    print(_page);
     if (productState.isLoading) {
       return Scaffold(
         body: Center(
@@ -48,12 +50,74 @@ class _ProductsCataloguePageState extends ConsumerState<ProductsCataloguePage> {
       ),
       body: SafeArea(
         child: Container(
-            height: size.height,
-            width: size.width,
-            padding: EdgeInsets.symmetric(horizontal: 5),
-            child: ListView.builder(
-              itemCount: 15,
-              itemBuilder: (context, index) {
+          height: size.height,
+          width: size.width,
+          padding: EdgeInsets.symmetric(horizontal: 5),
+          child: ListView.builder(
+            itemCount: 16,
+            itemBuilder: (context, index) {
+              if (index == 15) {
+                return Row(
+                  children: [
+                    if (_page > 1)
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromARGB(255, 255, 216, 229),
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          fixedSize: Size(50, 25),
+                          padding: EdgeInsets.zero,
+                        ),
+                        onPressed: () {
+                           setState(() {
+                          _page--;
+                        });
+                        ref
+                            .read(productNotifierProvider.notifier)
+                            .getAllProducts(_page);
+                        },
+                        child: Text(
+                          '< Prev',
+                          style: TextStyle(
+                            color: Colors.pink,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ),
+                    Spacer(),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            const Color.fromARGB(255, 255, 216, 229),
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        fixedSize: Size(50, 25),
+                        padding: EdgeInsets.zero,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _page++;
+                        });
+                        ref
+                            .read(productNotifierProvider.notifier)
+                            .getAllProducts(_page);
+                      },
+                      child: Text(
+                        'Next >',
+                        style: TextStyle(
+                          color: Colors.pink,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              } else {
                 final product1 =
                     productState.productsList!.elementAt(index * 2);
                 final product2 =
@@ -68,8 +132,10 @@ class _ProductsCataloguePageState extends ConsumerState<ProductsCataloguePage> {
                     ),
                   ],
                 );
-              },
-            )),
+              }
+            },
+          ),
+        ),
       ),
     );
   }
