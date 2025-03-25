@@ -56,5 +56,21 @@ flutter pub get
 ```bash
 flutter run
 ```
+---
 
+## **📱 Screenshots**
+
+<div style="overflow-x: auto; white-space: nowrap; text-align: center;">
+  <img alt="homepage" src="https://github.com/iamthetwodigiter/Shopping-App/blob/main/screens/home.jpg?raw=true" width="200" style="display: inline-block;">
+  <img alt="pagination" src="https://github.com/iamthetwodigiter/Shopping-App/blob/main/screens/pagination.jpg?raw=true" width="200" style="display: inline-block;">
+  <img alt="min_order_quantity" src="https://github.com/iamthetwodigiter/Shopping-App/blob/main/screens/min_order.jpg?raw=true" width="200" style="display: inline-block;">
+  <img alt="details_one" src="https://github.com/iamthetwodigiter/Shopping-App/blob/main/screens/details_1.jpg?raw=true" width="200" style="display: inline-block;">
+  <img alt="details_two" src="https://github.com/iamthetwodigiter/Shopping-App/blob/main/screens/details_2.jpg?raw=true" width="200" style="display: inline-block;">
+  <img alt="cart" src="https://github.com/iamthetwodigiter/Shopping-App/blob/main/screens/cart.jpg?raw=true" width="200" style="display: inline-block;">
+  <img alt="min_order_cart" src="https://github.com/iamthetwodigiter/Shopping-App/blob/main/screens/min_order_cart.jpg?raw=true" width="200" style="display: inline-block;">
+  <img alt="clear_cart" src="https://github.com/iamthetwodigiter/Shopping-App/blob/main/screens/clear_cart.jpg?raw=true" width="200" style="display: inline-block;">
+  <img alt="empty_cart" src="https://github.com/iamthetwodigiter/Shopping-App/blob/main/screens/empty_cart.jpg?raw=true" width="200" style="display: inline-block;">
+  <img alt="order_placed" src="https://github.com/iamthetwodigiter/Shopping-App/blob/main/screens/order_placed.jpg?raw=true" width="200" style="display: inline-block;">
+  
+</div>
 ---
