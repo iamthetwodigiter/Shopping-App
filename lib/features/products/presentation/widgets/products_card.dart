@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping/features/products/domain/entity/product_entity.dart';
 
@@ -33,13 +34,24 @@ class _ProductsCardState extends State<ProductsCard> {
           Stack(
             alignment: Alignment.bottomRight,
             children: [
-              // Image.network(
-              //   widget.product.images.last,
-              //   height: 150,
-              //   fit: BoxFit.cover,
-              //   cacheHeight: 512,
-              // ),
-             
+              CachedNetworkImage(
+                imageUrl: widget.product.thumbnail,
+                height: 150,
+                fit: BoxFit.cover,
+                errorWidget: (context, url, error) {
+                  return Center(
+                    child: Icon(
+                      Icons.error,
+                      color: Colors.pink,
+                    ),
+                  );
+                },
+                placeholder: (context, url) {
+                  return Center(
+                    child: CircularProgressIndicator.adaptive(),
+                  );
+                },
+              ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
@@ -70,6 +82,7 @@ class _ProductsCardState extends State<ProductsCard> {
             widget.product.brand ?? '',
             style: TextStyle(fontSize: 12),
           ),
+          Spacer(),
           Row(
             spacing: 8,
             children: [
